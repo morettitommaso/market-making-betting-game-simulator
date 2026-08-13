@@ -1,6 +1,6 @@
 # Market-Making & Betting-Game Simulator
 
-Built a market-making and betting-game simulator from scratch. Implemented a quoting engine that trades against an informed counterparty while managing inventory, adverse selection, and P&L across many episodes.
+Build a market-making and betting-game simulator from the ground up: start with expected-value reasoning on dice and card games, then implement a quoting engine that trades against an informed counterparty while managing inventory, adverse selection, and P&L across many episodes.
 
 ## How to run
 
@@ -11,7 +11,7 @@ python scaffold.py
 ## Steps
 
 - [x] **1.** expected_value
-- [ ] **2.** one_reroll_die_value
+- [x] **2.** one_reroll_die_value
 - [ ] **3.** pay_per_reroll_die_game
 - [ ] **4.** red_black_card_game_value
 - [ ] **5.** make_quotes
@@ -26,3 +26,5 @@ python scaffold.py
 - [ ] **14.** summarize_episode_pnls
 
 ---
+
+Built on Deep-ML.
