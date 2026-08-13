@@ -54,8 +54,58 @@ def pay_per_reroll_die_game(sides, reroll_cost):
 
     return {'threshold': t, 'value': max(v)}
 
-# Step 4 - red_black_card_game_value (not yet solved)
-# TODO: implement
+# Step 4 - red_black_card_game_value
+from functools import lru_cache
+
+def red_black_card_game_value(num_red, num_black):
+    # return {'value': expected payout under optimal stopping, 'stop_now': whether to stop immediately}.
+
+    @lru_cache(maxsize=None)
+    def V(r, b):
+
+        if r == 0 and b == 0:
+            return 0.0
+
+        if r == 0:
+            return 0.0
+
+        if b == 0:
+            return float(r)
+
+        # Value of continuing
+        cont = (
+            r / (r + b) * (1 + V(r - 1, b))
+            + b / (r + b) * (-1 + V(r, b - 1))
+        )
+
+        return max(0.0, cont)
+
+    # initial state
+    r = num_red
+    b = num_black
+
+    if r == 0 and b == 0:
+        cont = 0.0
+
+    elif r == 0:
+        cont = -1.0
+
+    elif b == 0:
+        cont = r
+
+    else:
+        cont = (
+            r / (r + b) * (1 + V(r - 1, b))
+            + b / (r + b) * (-1 + V(r, b - 1))
+        )
+
+    value = max(0.0, cont)
+    stop_now = (cont <= 0.0)
+
+    return {
+        'value': value,
+        'stop_now': stop_now
+    }
 
 # Step 5 - make_quotes (not yet solved)
 # TODO: implement
