@@ -38,8 +38,21 @@ def one_reroll_die_value(sides):
         "reroll_faces" : reroll_faces
     }
 
-# Step 3 - pay_per_reroll_die_game (not yet solved)
-# TODO: implement
+# Step 3 - pay_per_reroll_die_game
+import numpy as np
+
+def pay_per_reroll_die_game(sides, reroll_cost):
+    # return {'threshold': t, 'value': V} for the pay-per-reroll die game under the optimal threshold policy.
+
+    treshes = list(range(sides+1))
+
+    v = []
+    for t in treshes:
+        v.append( (t + sides) / 2 - ( (t - 1) / (sides - t +1) * reroll_cost) )
+
+    t = np.argmax(v)
+
+    return {'threshold': t, 'value': max(v)}
 
 # Step 4 - red_black_card_game_value (not yet solved)
 # TODO: implement
